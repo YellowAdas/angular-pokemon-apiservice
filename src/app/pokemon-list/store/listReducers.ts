@@ -7,7 +7,7 @@ import {
 } from '@ngrx/store';
 import { PokemonDetails } from '../../pokemon-details.model';
 import { AppState } from '../../state/state';
-import { errorList, loadList, setFavs, setPagination, toggleFavs } from './listActions';
+import { errorList, initFavs, loadList, setFavs, setPagination, toggleFavs } from './listActions';
 
 export interface State {
   list: { pokemonList: PokemonDetails[]; error: string };
