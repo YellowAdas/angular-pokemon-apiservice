@@ -1,7 +1,7 @@
 import { createReducer, on } from "@ngrx/store/src/reducer_creator";
 import { PokemonDetailsAbility, PokemonType } from "../../pokemon-details.model";
 
-export interface State {
+export interface PokemonDetailState {
   pokemonDetail: {
     name : string;
     height: number;
@@ -15,7 +15,7 @@ export interface State {
   }
 }
 
-export const initialState: State = {
+export const initialState: PokemonDetailState = {
   pokemonDetail: {
     name : 'default name',
     height: 0,
@@ -29,7 +29,7 @@ export const initialState: State = {
       }
     };
 
-export const ListReducer = createReducer<State>(
+export const ListReducer = createReducer<PokemonDetailState>(
   initialState,
   on(actionName, (state, action) => ({ ...state, action.actionName }));
 

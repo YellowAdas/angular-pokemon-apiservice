@@ -18,7 +18,7 @@ import {
   toggleLoading,
 } from './listActions';
 
-export interface State {
+export interface PokemonListState {
   list: { pokemonList: PokemonDetails[]; error: string };
   pagination: {
     currentPage: number;
@@ -29,7 +29,7 @@ export interface State {
   isLoading: boolean;
 }
 
-export const initialState: State = {
+export const initialState: PokemonListState = {
   list: { pokemonList: [], error: '' },
   pagination: {
     currentPage: 0,
@@ -40,7 +40,7 @@ export const initialState: State = {
   isLoading: false,
 };
 
-export const ListReducer = createReducer<State>(
+export const ListReducer = createReducer<PokemonListState>(
   initialState,
   on(getList, (state, action) => ({ ...state, isLoading: true })),
   on(loadList, (state, action) => ({
@@ -82,13 +82,13 @@ export const ListReducer = createReducer<State>(
 
 export const pokemonListFeatureKey = 'PokemonList';
 
-export const selectItems = (state: State) => state.list.pokemonList;
+export const selectItems = (state: PokemonListState) => state.list.pokemonList;
 
-export const selectError = (state: State) => state.list.error;
+export const selectError = (state: PokemonListState) => state.list.error;
 
-export const _selectFav = (state: State) => state.favorites;
+export const _selectFav = (state: PokemonListState) => state.favorites;
 
-export const selectPokemonListState = createFeatureSelector<AppState, State>(
+export const selectPokemonListState = createFeatureSelector<AppState, PokemonListState>(
   pokemonListFeatureKey
 );
 
