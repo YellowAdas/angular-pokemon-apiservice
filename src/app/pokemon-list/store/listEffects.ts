@@ -79,7 +79,8 @@ export class ListEffects {
       this.actions$.pipe(
         ofType(initFavs),
         map(() => {
-          return setFavs(JSON.parse(localStorage.getItem('Favorites')));
+          const parsed = JSON.parse(localStorage.getItem('Favorites')) ?? []
+          return setFavs({favorites : parsed});
         })
       )
   );
