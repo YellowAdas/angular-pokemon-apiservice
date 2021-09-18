@@ -9,7 +9,9 @@
     </button>
   </div>
   <div class="row overlay-parent" *ngIf="toggleList">
-    <div class="overlay"></div>
+    <div class="overlay">
+    <mat-spinner mode="indeterminate">
+    </mat-spinner></div>
     <div class="col-xs-12 col-md-6 col-md-offset-3 ">
       <ul class="list-group">
         <!-- <li [ngStyle]="{'border-left-color':setColorByType(item.types[0].type.name)}" -->
