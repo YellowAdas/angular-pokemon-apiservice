@@ -14,7 +14,7 @@
   background: var(--borderColor);
 }
 
-.overlay-parent{
+.overlay-parent {
   position: relative;
 }
 
@@ -23,4 +23,17 @@
   background-color: rgb(240, 248, 255, 0.5);
   inset: 0;
   z-index: 1;
+  display: grid;
+  place-items: center;
+}
+
+.pokemon-sprite {
+  height: 96px;
+  aspect-ratio: 1 / 1;
+}
+
+:host {
+  height: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
 }

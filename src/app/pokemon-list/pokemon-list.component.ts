@@ -12,7 +12,8 @@ import { getList, setPagination, toggleFavs, initFavs  } from './store/listActio
 import {
   selectPokemonListItems,
   selectPokemonListPagination,
-  selectFav
+  selectFav,
+  selectIsLoading
 } from './store/listReducers';
 import { PokemonDetails } from '../pokemon-details.model';
 
@@ -29,6 +30,7 @@ export class PokemonListComponent implements OnInit {
   pagination$ = this.store.pipe(select(selectPokemonListPagination));
   favorites$ = this.store.pipe(select(selectFav));
   favoritesPokemons = new Set<number>();
+  isLoading$ = this.store.pipe(select(selectIsLoading))
 
   constructor(
     private pokemonApiService: PokemonApiService,

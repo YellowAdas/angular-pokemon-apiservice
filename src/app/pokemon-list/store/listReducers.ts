@@ -7,7 +7,16 @@ import {
 } from '@ngrx/store';
 import { PokemonDetails } from '../../pokemon-details.model';
 import { AppState } from '../../state/state';
-import { errorList, initFavs, loadList, setFavs, setPagination, toggleFavs } from './listActions';
+import {
+  errorList,
+  getList,
+  initFavs,
+  loadList,
+  setFavs,
+  setPagination,
+  toggleFavs,
+  toggleLoading,
+} from './listActions';
 
 export interface State {
   list: { pokemonList: PokemonDetails[]; error: string };
@@ -17,6 +26,7 @@ export interface State {
     totalCount: number;
   };
   favorites: number[];
+  isLoading: boolean;
 }
 
 export const initialState: State = {
@@ -27,10 +37,12 @@ export const initialState: State = {
     totalCount: 0,
   },
   favorites: [],
+  isLoading: false,
 };
 
 export const ListReducer = createReducer<State>(
   initialState,
+  on(getList, (state, action) => ({ ...state, isLoading: true })),
   on(loadList, (state, action) => ({
     ...state,
     list: { pokemonList: action.pokemonListItems, error: '' },
@@ -38,6 +50,7 @@ export const ListReducer = createReducer<State>(
       ...state.pagination,
       totalCount: action.totalCount,
     },
+    isLoading: false,
   })),
   on(errorList, (state, action) => ({
     ...state,
@@ -63,9 +76,8 @@ export const ListReducer = createReducer<State>(
   }),
   on(setFavs, (state, action) => ({
     ...state,
-    favorites : action.favorites
-  })
-  )
+    favorites: action.favorites,
+  }))
 );
 
 export const pokemonListFeatureKey = 'PokemonList';
@@ -80,6 +92,7 @@ export const selectPokemonListState = createFeatureSelector<AppState, State>(
   pokemonListFeatureKey
 );
 
+
 export const selectPokemonListItems = createSelector(
   selectPokemonListState,
   selectItems
@@ -91,7 +104,9 @@ export const selectPokemonListPagination = createSelector(
   (state) => state.pagination
 );
 
-export const selectFav = createSelector(
+export const selectFav = createSelector(selectPokemonListState, _selectFav);
+
+export const selectIsLoading = createSelector(
   selectPokemonListState,
-  _selectFav
+  (state) => state.isLoading
 );

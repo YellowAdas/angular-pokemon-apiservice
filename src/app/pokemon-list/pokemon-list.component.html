@@ -9,10 +9,10 @@
     </button>
   </div>
   <div class="row overlay-parent" *ngIf="toggleList">
-    <div class="overlay">
-    <mat-spinner mode="indeterminate">
-    </mat-spinner></div>
-    <div class="col-xs-12 col-md-6 col-md-offset-3 ">
+    <div *ngIf="isLoading$ | async" class="overlay">
+      <mat-spinner class="spinner" mode="indeterminate"> </mat-spinner>
+    </div>
+    <div class="col-xs-12 col-md-6 col-md-offset-3">
       <ul class="list-group">
         <!-- <li [ngStyle]="{'border-left-color':setColorByType(item.types[0].type.name)}" -->
         <li
@@ -24,8 +24,16 @@
           <h3 class="capitalize">
             <a [routerLink]="['/pokemonDetail', item.name]">{{ item.name }} </a>
           </h3>
-          <img [src]="item.sprites.front_default" />
-          <img [src]="item.sprites.back_default" />
+          <img
+            class="pokemon-sprite"
+            loading="lazy"
+            [src]="item.sprites.front_default"
+          />
+          <img
+            class="pokemon-sprite"
+            loading="lazy"
+            [src]="item.sprites.back_default"
+          />
           <div>
             <mat-icon
               style="cursor: pointer; "
@@ -45,13 +53,14 @@
       </ul>
     </div>
   </div>
-
-  <mat-paginator
-    [length]="(pagination$ | async).totalCount"
-    [pageSize]="(pagination$ | async).limit"
-    [pageSizeOptions]="[10, 25, 50, 100]"
-    aria-label="Select page"
-    (page)="onPageChange($event)"
-  >
-  </mat-paginator>
+  <div>
+    <mat-paginator
+      [length]="(pagination$ | async).totalCount"
+      [pageSize]="(pagination$ | async).limit"
+      [pageSizeOptions]="[10, 25, 50, 100]"
+      aria-label="Select page"
+      (page)="onPageChange($event)"
+    >
+    </mat-paginator>
+  </div>
 </ng-container>

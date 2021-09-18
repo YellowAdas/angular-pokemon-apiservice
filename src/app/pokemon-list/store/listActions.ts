@@ -23,11 +23,11 @@ export const toggleFavs = createAction(
   props<{ id: number }>()
 );
 
-export const initFavs = createAction(
-  '[fav-list] init favorites'
-);
+export const initFavs = createAction('[fav-list] init favorites');
 
 export const setFavs = createAction(
   '[fav-list] set favorites',
   props<{ favorites: number[] }>()
 );
+
+export const toggleLoading = createAction('[fetch-list] loading');
