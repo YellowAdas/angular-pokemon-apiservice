@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { tap } from 'rxjs';
 import { PokemonDetails } from '../pokemon-details.model';
 import {PokemonApiService} from '../PokemonApiService/pokemon-api.service';
 

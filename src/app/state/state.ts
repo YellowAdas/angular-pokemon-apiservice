@@ -1,3 +1,4 @@
+import { pokemonDetailFeatureKey } from '../pokemon-detail/PokemonDetailStore/detailsReducers';
 import {
   pokemonListFeatureKey,
   State
@@ -5,4 +6,5 @@ import {
 
 export interface AppState {
   [pokemonListFeatureKey]: State;
+  [pokemonDetailFeatureKey]: State;
 }
