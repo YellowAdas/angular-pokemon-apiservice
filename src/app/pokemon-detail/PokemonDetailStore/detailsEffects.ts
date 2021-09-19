@@ -7,5 +7,5 @@ export class ListEffects {
   constructor(
     private store: Store,
     private actions$: Actions
-  ) {}
+  ) {}                                                                                                      
 }

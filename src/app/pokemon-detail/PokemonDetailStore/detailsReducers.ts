@@ -29,8 +29,8 @@ export const initialState: PokemonDetailState = {
       }
     };
 
-export const ListReducer = createReducer<PokemonDetailState>(
-  initialState,
-  on(actionName, (state, action) => ({ ...state, action.actionName }));
+// export const ListReducer = createReducer<PokemonDetailState>(
+//   initialState,
+//   on(actionName, (state, action) => ({ ...state, action.actionName }));
 
   export const pokemonDetailFeatureKey = 'PokemonDetail';
