@@ -1,4 +1,5 @@
 import { createReducer, on } from "@ngrx/store";
+import { createSelector } from "@ngrx/store/src/selector";
 import { PokemonDetails}   from "../../pokemon-details.model";
 import { getDetailsSuccess } from "../PokemonDetailStore/detailsActions";
 
@@ -15,7 +16,7 @@ export const DetailsReducer = createReducer<PokemonDetailState>(
 
   export const pokemonDetailFeatureKey = 'PokemonDetail';
 
-  export const selectDetails = (state: PokemonDetailState) => state.pokemonDetails;
+  export const selectDetails = createSelector (state: PokemonDetailState) => state.pokemonDetails;
 
 
  
