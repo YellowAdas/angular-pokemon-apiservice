@@ -26,9 +26,9 @@ export class PokemonApiService {
     );
   }
 
-  fetchDetails(name: string) {
+  fetchDetails(nameOrId: string | number )  {
     return this.http.get<PokemonDetails>(
-      `https://pokeapi.co/api/v2/pokemon/${name}`
+      `https://pokeapi.co/api/v2/pokemon/${nameOrId}`
     );
   }
 
