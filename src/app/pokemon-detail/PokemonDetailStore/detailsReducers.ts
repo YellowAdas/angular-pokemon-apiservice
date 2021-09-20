@@ -1,11 +1,9 @@
-import { createReducer, on } from "@ngrx/store/src/reducer_creator";
+import { createReducer, on } from "@ngrx/store";
 import { PokemonDetails}   from "../../pokemon-details.model";
-import { getDetails, getDetailsSuccess } from "../PokemonDetailStore/detailsActions";
+import { getDetailsSuccess } from "../PokemonDetailStore/detailsActions";
 
 export interface PokemonDetailState {
-  pokemonDetails: PokemonDetails | null
-};
-
+  pokemonDetails: PokemonDetails | null };
 
 export const initialState: PokemonDetailState = {
   pokemonDetails: null

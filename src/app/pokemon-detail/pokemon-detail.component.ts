@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { PokemonDetails } from '../pokemon-details.model';
-import {PokemonApiService} from '../PokemonApiService/pokemon-api.service';
+import { getDetails } from './PokemonDetailStore/detailsActions';
+import { selectDetails } from './PokemonDetailStore/detailsReducers';
 
 @Component({
   selector: 'app-pokemon-detail',
@@ -11,17 +13,17 @@ import {PokemonApiService} from '../PokemonApiService/pokemon-api.service';
 })
 export class PokemonDetailComponent implements OnInit {
   constructor(
-    private pokemonApiService: PokemonApiService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private store: Store<{}>
   ) {}
 
   paramsName = this.route.snapshot.params['name'];
   
 
-  ngOnInit() {}
+  ngOnInit() { this.store.dispatch( getDetails(this.paramsName) )}
 
-  pokemonDetails$: Observable<PokemonDetails>;
+  pokemonDetails$: Observable<PokemonDetails> = this.store.select(selectDetails);
 
 
   goBackToList() {

@@ -27,6 +27,7 @@ export class PokemonListComponent implements OnInit {
     select(selectPokemonListItems)
   );
 
+  
   pagination$ = this.store.pipe(select(selectPokemonListPagination));
   favorites$ = this.store.pipe(select(selectFav));
   favoritesPokemons = new Set<number>();
