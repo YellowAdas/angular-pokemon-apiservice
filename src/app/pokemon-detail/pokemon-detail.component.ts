@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { PokemonDetails } from '../pokemon-details.model';
 import {PokemonApiService} from '../PokemonApiService/pokemon-api.service';
 
@@ -16,18 +17,12 @@ export class PokemonDetailComponent implements OnInit {
   ) {}
 
   paramsName = this.route.snapshot.params['name'];
+  
 
-  ngOnInit() {this.onFetchDetails();}
+  ngOnInit() {}
 
-  pokemonDetails: PokemonDetails | null = null;
+  pokemonDetails$: Observable<PokemonDetails>;
 
-  onFetchDetails() {
-    this.pokemonApiService
-      .fetchDetails(this.paramsName)
-      .subscribe(responseData => {
-        this.pokemonDetails = responseData;
-      });
-  }
 
   goBackToList() {
     this.router.navigate(['']);
