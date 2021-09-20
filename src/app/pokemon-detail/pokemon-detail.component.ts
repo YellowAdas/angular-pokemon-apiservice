@@ -21,7 +21,8 @@ export class PokemonDetailComponent implements OnInit {
   paramsName = this.route.snapshot.params['name'];
   
 
-  ngOnInit() { this.store.dispatch( getDetails(this.paramsName) )}
+  ngOnInit() {
+    this.store.dispatch( getDetails(this.paramsName) )}
 
   pokemonDetails$: Observable<PokemonDetails> = this.store.select(selectDetails);
 

@@ -27,7 +27,6 @@ export class PokemonListComponent implements OnInit {
     select(selectPokemonListItems)
   );
 
-  
   pagination$ = this.store.pipe(select(selectPokemonListPagination));
   favorites$ = this.store.pipe(select(selectFav));
   favoritesPokemons = new Set<number>();
@@ -43,39 +42,39 @@ export class PokemonListComponent implements OnInit {
   currentPage = 0;
   toggleList = true;
 
-  pokemonListItemFetchRequest$ = new Subject<{
-    limit: number;
-    offset: number;
-  }>();
+  // pokemonListItemFetchRequest$ = new Subject<{
+  //   limit: number;
+  //   offset: number;
+  // }>();
 
-  pokemonListResult$: Observable<
-    PokemonListResult
-  > = this.pokemonListItemFetchRequest$.pipe(
-    switchMap(fetchRequest => {
-      return this.pokemonApiService.fetchList(
-        fetchRequest.limit,
-        fetchRequest.offset
-      );
-    })
-  );
+  // pokemonListResult$: Observable<
+  //   PokemonListResult
+  // > = this.pokemonListItemFetchRequest$.pipe(
+  //   switchMap(fetchRequest => {
+  //     return this.pokemonApiService.fetchList(
+  //       fetchRequest.limit,
+  //       fetchRequest.offset
+  //     );
+  //   })
+  // );
   pokemonListItem: PokemonListItem[] = [];
 
   ngOnInit() {
     this.store.dispatch(getList());
-    this.pokemonListResult$.subscribe(responseData => {
-      this.pokemonListItem = responseData.results;
-      this.totalCount = responseData.count;
-    });
+    // this.pokemonListResult$.subscribe(responseData => {
+    //   this.pokemonListItem = responseData.results;
+    //   this.totalCount = responseData.count;
+    // });
     this.store.dispatch(initFavs());
   }
 
-  onFetch() {
-    const offset = this.currentPage * this.pageSize;
-    this.pokemonListItemFetchRequest$.next({
-      offset,
-      limit: this.pageSize
-    });
-  }
+  // onFetch() {
+  //   const offset = this.currentPage * this.pageSize;
+  //   this.pokemonListItemFetchRequest$.next({
+  //     offset,
+  //     limit: this.pageSize
+  //   });
+  // }
 
   onPageChange(event: PageEvent) {
     this.store.dispatch(
@@ -83,14 +82,14 @@ export class PokemonListComponent implements OnInit {
     );
   }
 
-  onFetchtest() {
-    this.toggleList= !this.toggleList;
-    const offset = this.currentPage * this.pageSize;
-    this.pokemonListItemFetchRequest$.next({
-      offset,
-      limit: this.pageSize
-    });
-  }
+  // onFetchtest() {
+  //   this.toggleList= !this.toggleList;
+  //   const offset = this.currentPage * this.pageSize;
+  //   this.pokemonListItemFetchRequest$.next({
+  //     offset,
+  //     limit: this.pageSize
+  //   });
+  // }
 
   // już tłumaczę - tutaj oczekujesz stringa  - type name, ale zapomniałeś że tam jest jeszcze type po drodze czyli zamiast item.types.0.name trzeba było item.types[0].type.name - zauważ też że dałem [0]. zamiast .0. bo tak się przechodzi do pierwszego (zerowego indexu) elementu tablicy
   // zadanie przerob funkcje setColorByType na pipe i poczytaj czemu są lepsze - pure function / mnemonification

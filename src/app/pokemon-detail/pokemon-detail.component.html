@@ -3,7 +3,7 @@
 </p>
 <div >
   <p><img [src]="" [alt]=""></p>
-  <h4 class="capitalize" >Pokemon </h4>
+  <h4 class="capitalize" >Pokemon {{ (pokemonDetails$ | async).name }} </h4>
   <p>Height </p>
   <p>Abilities: </p>
   <ul class="list-group">

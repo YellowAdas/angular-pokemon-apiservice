@@ -10,12 +10,10 @@ import { AppState } from '../../state/state';
 import {
   errorList,
   getList,
-  initFavs,
   loadList,
   setFavs,
   setPagination,
   toggleFavs,
-  toggleLoading,
 } from './listActions';
 
 export interface PokemonListState {

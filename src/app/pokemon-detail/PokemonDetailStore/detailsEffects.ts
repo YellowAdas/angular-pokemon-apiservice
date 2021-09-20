@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Actions, ofType, createEffect } from '@ngrx/effects';
-import { Store } from '@ngrx/store';
 import { map, switchMap } from 'rxjs/operators';
 import { PokemonApiService } from '../../PokemonApiService/pokemon-api.service';
 import {
@@ -11,7 +10,6 @@ import {
 @Injectable()
 export class ListEffects {
   constructor(
-    private store: Store,
     private pokemonApiService: PokemonApiService,
     private actions$: Actions
   ) {}

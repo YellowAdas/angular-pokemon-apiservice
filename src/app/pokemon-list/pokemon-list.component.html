@@ -4,11 +4,7 @@
 </div> -->
 
 <ng-container *ngIf="favorites$ | async as favorites">
-  <div>
-    <button class="btn btn-primary" (click)="onFetchtest()">
-      Pobierz/Schowaj liste
-    </button>
-  </div>
+
   <div class="row overlay-parent" *ngIf="toggleList">
     <div *ngIf="isLoading$ | async" class="overlay">
       <mat-spinner class="spinner" mode="indeterminate"> </mat-spinner>
