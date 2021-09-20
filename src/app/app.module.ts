@@ -21,6 +21,8 @@ import {
 import { ListEffects } from './pokemon-list/store/listEffects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { PokemonTypeToColorPipe } from './pokemon-type-to-color.pipe';
+import { DetailsEffects } from './pokemon-detail/PokemonDetailStore/detailsEffects';
+import { DetailsReducer, pokemonDetailFeatureKey } from './pokemon-detail/PokemonDetailStore/detailsReducers';
 
 const appRoutes: Routes = [
   { path: '', component: PokemonListComponent },
@@ -37,8 +39,8 @@ const appRoutes: Routes = [
     MatPaginatorModule,
     MatIconModule,
     MatProgressSpinnerModule,
-    StoreModule.forRoot({ [pokemonListFeatureKey]: ListReducer }, {}),
-    EffectsModule.forRoot([ListEffects]),
+    StoreModule.forRoot({ [pokemonListFeatureKey]: ListReducer , }, {}),
+    EffectsModule.forRoot([ListEffects, DetailsEffects]),
     StoreDevtoolsModule.instrument({})
   ],
   declarations: [AppComponent, PokemonListComponent, PokemonDetailComponent, PokemonTypeToColorPipe],

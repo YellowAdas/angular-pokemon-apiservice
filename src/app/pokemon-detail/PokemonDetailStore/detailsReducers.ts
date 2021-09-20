@@ -9,7 +9,7 @@ export const initialState: PokemonDetailState = {
   pokemonDetails: null
 }
 
-export const ListReducer = createReducer<PokemonDetailState>(
+export const DetailsReducer = createReducer<PokemonDetailState>(
   initialState,
   on(getDetailsSuccess, (state, action) => ({ ...state, pokemonDetails : action.pokemonDetails} ) ));
 
