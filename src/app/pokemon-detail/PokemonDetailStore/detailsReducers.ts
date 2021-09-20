@@ -1,20 +1,25 @@
 import { createReducer, on } from "@ngrx/store/src/reducer_creator";
-import { PokemonDetails, PokemonDetailsAbility, PokemonType } from "../../pokemon-details.model";
-import { getDetails } from "../PokemonDetailStore/detailsActions";
+import { PokemonDetails}   from "../../pokemon-details.model";
+import { getDetails, getDetailsSuccess } from "../PokemonDetailStore/detailsActions";
 
 export interface PokemonDetailState {
-  pokemonDetail: PokemonDetails | null};
-}
+  pokemonDetails: PokemonDetails | null
+};
+
 
 export const initialState: PokemonDetailState = {
-  pokemonDetail: null
+  pokemonDetails: null
 }
 
 export const ListReducer = createReducer<PokemonDetailState>(
   initialState,
-  on(getDetails, (state, action) => ({ ...state, pokemonDetail : action.getDetailsSuccess )));
+  on(getDetailsSuccess, (state, action) => ({ ...state, pokemonDetails : action.pokemonDetails} ) ));
 
   export const pokemonDetailFeatureKey = 'PokemonDetail';
+
+  export const selectDetails = (state: PokemonDetailState) => state.pokemonDetails;
+
+
  
   // onFetchDetails() {
   //   this.pokemonApiService
