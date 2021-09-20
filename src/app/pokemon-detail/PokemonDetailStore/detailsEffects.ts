@@ -19,7 +19,7 @@ export class ListEffects {
   getDetails$ = createEffect(() =>
     this.actions$.pipe(
       ofType(getDetails),
-      switchMap((action) => this.pokemonApiService.fetchDetails(action.id)),
+      switchMap((action) => this.pokemonApiService.fetchDetails(action.idOrName)),
       map((pokemonDetails) => getDetailsSuccess({ pokemonDetails }))
     )
   );
