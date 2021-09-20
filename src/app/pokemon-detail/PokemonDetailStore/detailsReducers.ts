@@ -1,29 +1,41 @@
-import { createReducer, on } from "@ngrx/store";
-import { createSelector } from "@ngrx/store/src/selector";
-import { PokemonDetails}   from "../../pokemon-details.model";
-import { getDetailsSuccess } from "../PokemonDetailStore/detailsActions";
+import { createReducer, on, createFeatureSelector,
+  createSelector } from '@ngrx/store';
+import { PokemonDetails } from '../../pokemon-details.model';
+import { AppState } from '../../state/state';
+import { getDetailsSuccess } from '../PokemonDetailStore/detailsActions';
 
 export interface PokemonDetailState {
-  pokemonDetails: PokemonDetails | null };
+  pokemonDetails: PokemonDetails | null;
+}
 
 export const initialState: PokemonDetailState = {
-  pokemonDetails: null
-}
+  pokemonDetails: null,
+};
 
 export const DetailsReducer = createReducer<PokemonDetailState>(
   initialState,
-  on(getDetailsSuccess, (state, action) => ({ ...state, pokemonDetails : action.pokemonDetails} ) ));
+  on(getDetailsSuccess, (state, action) => ({
+    ...state,
+    pokemonDetails: action.pokemonDetails,
+  }))
+);
 
-  export const pokemonDetailFeatureKey = 'PokemonDetail';
+export const pokemonDetailFeatureKey = 'PokemonDetail';
 
-  export const selectDetails = createSelector (state: PokemonDetailState) => state.pokemonDetails;
+export const selectPokemonDetailsState = createFeatureSelector<
+  AppState,
+  PokemonDetailState
+>(pokemonDetailFeatureKey);
 
+export const selectDetails = createSelector(
+  selectPokemonDetailsState,
+  (state) => state.pokemonDetails
+);
 
- 
-  // onFetchDetails() {
-  //   this.pokemonApiService
-  //     .fetchDetails(this.paramsName)
-  //     .subscribe(responseData => {
-  //       this.pokemonDetails = responseData;
-  //     });
-  // }
+// onFetchDetails() {
+//   this.pokemonApiService
+//     .fetchDetails(this.paramsName)
+//     .subscribe(responseData => {
+//       this.pokemonDetails = responseData;
+//     });
+// }
