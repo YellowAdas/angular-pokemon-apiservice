@@ -1,17 +1,21 @@
-import { createReducer, on, createFeatureSelector,
-  createSelector } from '@ngrx/store';
-import { PokemonDetails } from '../../pokemon-details.model';
+import {
+  createReducer,
+  on,
+  createFeatureSelector,
+  createSelector,
+} from '@ngrx/store';
+import { PokemonDetails , PokemonDetailsAbility } from '../../pokemon-details.model';
 import { AppState } from '../../state/state';
-import { getDetailsSuccess } from '../PokemonDetailStore/detailsActions';
+import { getDetailsSuccess, getAbilityPropSuccess } from '../PokemonDetailStore/detailsActions';
 
 export interface PokemonDetailState {
   pokemonDetails: PokemonDetails | null;
-  abilityDesc : string;
+  abilityDesc: PokemonDetailsAbility | null ;
 }
 
 export const initialState: PokemonDetailState = {
   pokemonDetails: null,
-  abilityDesc : ''
+  abilityDesc: null,
 };
 
 export const DetailsReducer = createReducer<PokemonDetailState>(
@@ -19,6 +23,10 @@ export const DetailsReducer = createReducer<PokemonDetailState>(
   on(getDetailsSuccess, (state, action) => ({
     ...state,
     pokemonDetails: action.pokemonDetails,
+  })),
+  on(getAbilityPropSuccess, (state, action) => ({
+    ...state,
+    abilityDesc : action.abilityProp
   }))
 );
 

@@ -6,6 +6,7 @@ import {
   getDetails,
   getDetailsSuccess,
   getAbilityProp,
+  getAbilityPropSuccess,
 } from '../PokemonDetailStore/detailsActions';
 
 @Injectable()
@@ -24,15 +25,17 @@ export class DetailsEffects {
       map((pokemonDetails) => getDetailsSuccess({ pokemonDetails }))
     )
   );
+
+  getAbilityProp$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(getAbilityProp),
+      switchMap((action) => this.pokemonApiService.fetchAbility(action.name)),
+      map((abilityProp) =>
+        getAbilityPropSuccess({ abilityProp })
+      )
+    )
+  );
 }
-
-getAbilityProp$ = createEffect(() =>
-  this.actions$.pipe(
-    ofType(getAbilityProp),
-    switchMap((action) => this.pokemonApiService.fetchAbility(action.name))
-  )
-);
-
 // onFetchDetails() {
 //   this.pokemonApiService
 //     .fetchDetails(this.paramsName)
