@@ -14,6 +14,10 @@ export interface PokemonDetailsAbility {
   ability: {
     name: string;
     description:string;
+    effect_entries: {
+      effect: string,
+      language: string
+  }
     url: string;
   };
   is_hidden: boolean;

@@ -4,13 +4,19 @@ import {
   createFeatureSelector,
   createSelector,
 } from '@ngrx/store';
-import { PokemonDetails , PokemonDetailsAbility } from '../../pokemon-details.model';
+import {
+  PokemonDetails,
+  PokemonDetailsAbility,
+} from '../../pokemon-details.model';
 import { AppState } from '../../state/state';
-import { getDetailsSuccess, getAbilityPropSuccess } from '../PokemonDetailStore/detailsActions';
+import {
+  getDetailsSuccess,
+  getAbilityPropSuccess,
+} from '../PokemonDetailStore/detailsActions';
 
 export interface PokemonDetailState {
   pokemonDetails: PokemonDetails | null;
-  abilityDesc: PokemonDetailsAbility | null ;
+  abilityDesc: PokemonDetailsAbility | null;
 }
 
 export const initialState: PokemonDetailState = {
@@ -26,7 +32,7 @@ export const DetailsReducer = createReducer<PokemonDetailState>(
   })),
   on(getAbilityPropSuccess, (state, action) => ({
     ...state,
-    abilityDesc : action.abilityProp
+    abilityDesc: action.abilityProp,
   }))
 );
 
@@ -42,10 +48,9 @@ export const selectDetails = createSelector(
   (state) => state.pokemonDetails
 );
 
-// onFetchDetails() {
-//   this.pokemonApiService
-//     .fetchDetails(this.paramsName)
-//     .subscribe(responseData => {
-//       this.pokemonDetails = responseData;
-//     });
-// }
+export const selectAbilityProp = createSelector(
+  selectPokemonDetailsState,
+  (state) => state.abilityDesc
+);
+
+

@@ -7,26 +7,32 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { RouterModule, Routes } from '@angular/router';
 import { EffectsModule } from '@ngrx/effects';
 import { MatIconModule } from '@angular/material/icon';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 
 import { AppComponent } from './app.component';
 import { PokemonDetailComponent } from './pokemon-detail/pokemon-detail.component';
 import { PokemonListComponent } from './pokemon-list/pokemon-list.component';
 import {
   ListReducer,
-  pokemonListFeatureKey
+  pokemonListFeatureKey,
 } from './pokemon-list/store/listReducers';
 import { ListEffects } from './pokemon-list/store/listEffects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { PokemonTypeToColorPipe } from './pokemon-type-to-color.pipe';
 import { DetailsEffects } from './pokemon-detail/PokemonDetailStore/detailsEffects';
-import { DetailsReducer, pokemonDetailFeatureKey } from './pokemon-detail/PokemonDetailStore/detailsReducers';
+import {
+  DetailsReducer,
+  pokemonDetailFeatureKey,
+} from './pokemon-detail/PokemonDetailStore/detailsReducers';
+import { DetailAbilityComponent } from './pokemon-detail/detail-ability/detail-ability.component';
 
 const appRoutes: Routes = [
   { path: '', component: PokemonListComponent },
-  { path: 'pokemonDetail/:name', component: PokemonDetailComponent }
+  {
+    path: 'pokemonDetail/:name',
+    component: PokemonDetailComponent},
+    { path: 'pokemonDetail/:name/ability/:name', component: DetailAbilityComponent },
 ];
 
 @NgModule({
@@ -39,11 +45,23 @@ const appRoutes: Routes = [
     MatPaginatorModule,
     MatIconModule,
     MatProgressSpinnerModule,
-    StoreModule.forRoot({ [pokemonListFeatureKey]: ListReducer , [pokemonDetailFeatureKey]: DetailsReducer }, {}),
+    StoreModule.forRoot(
+      {
+        [pokemonListFeatureKey]: ListReducer,
+        [pokemonDetailFeatureKey]: DetailsReducer,
+      },
+      {}
+    ),
     EffectsModule.forRoot([ListEffects, DetailsEffects]),
-    StoreDevtoolsModule.instrument({})
+    StoreDevtoolsModule.instrument({}),
   ],
-  declarations: [AppComponent, PokemonListComponent, PokemonDetailComponent, PokemonTypeToColorPipe],
-  bootstrap: [AppComponent]
+  declarations: [
+    AppComponent,
+    PokemonListComponent,
+    PokemonDetailComponent,
+    PokemonTypeToColorPipe,
+    DetailAbilityComponent
+  ],
+  bootstrap: [AppComponent],
 })
 export class AppModule {}

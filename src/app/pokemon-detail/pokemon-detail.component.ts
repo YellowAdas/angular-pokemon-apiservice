@@ -9,7 +9,7 @@ import { selectDetails } from './PokemonDetailStore/detailsReducers';
 @Component({
   selector: 'app-pokemon-detail',
   templateUrl: './pokemon-detail.component.html',
-  styleUrls: ['./pokemon-detail.component.css']
+  styleUrls: ['./pokemon-detail.component.css'],
 })
 export class PokemonDetailComponent implements OnInit {
   constructor(
@@ -19,16 +19,18 @@ export class PokemonDetailComponent implements OnInit {
   ) {}
 
   paramsName = this.route.snapshot.params['name'];
-  
 
   ngOnInit() {
-    console.log(this.paramsName)
-    this.store.dispatch( getDetails( {idOrName: this.paramsName} ) )}
+    console.log(this.paramsName);
+    this.store.dispatch(getDetails({ idOrName: this.paramsName }));
+  }
 
-  pokemonDetails$: Observable<PokemonDetails> = this.store.select(selectDetails);
-
+  pokemonDetails$: Observable<PokemonDetails> =
+    this.store.select(selectDetails);
 
   goBackToList() {
     this.router.navigate(['']);
   }
+
+
 }
