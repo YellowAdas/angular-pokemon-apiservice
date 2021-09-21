@@ -13,6 +13,7 @@ export interface PokemonDetails {
 export interface PokemonDetailsAbility {
   ability: {
     name: string;
+    description:string;
     url: string;
   };
   is_hidden: boolean;
@@ -26,3 +27,6 @@ export interface PokemonType {
   };
   slot: number;
 }
+
+
+

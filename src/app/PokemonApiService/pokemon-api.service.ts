@@ -1,7 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-import { PokemonDetails } from '../pokemon-details.model';
+import { PokemonDetails , PokemonDetailsAbility } from '../pokemon-details.model';
 import { PokemonListItem } from '../pokemon-list-item.model';
 
 export interface ListWrapper<ListItem> {
@@ -30,6 +30,10 @@ export class PokemonApiService {
     return this.http.get<PokemonDetails>(
       `https://pokeapi.co/api/v2/pokemon/${nameOrId}`
     );
+  }
+
+  fetchAbility(name : string) {
+    return this.http.get<PokemonDetailsAbility>(`https://pokeapi.co/api/v2/ability/${name}/`)
   }
 
 }

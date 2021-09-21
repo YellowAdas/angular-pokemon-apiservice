@@ -6,10 +6,12 @@ import { getDetailsSuccess } from '../PokemonDetailStore/detailsActions';
 
 export interface PokemonDetailState {
   pokemonDetails: PokemonDetails | null;
+  abilityDesc : string;
 }
 
 export const initialState: PokemonDetailState = {
   pokemonDetails: null,
+  abilityDesc : ''
 };
 
 export const DetailsReducer = createReducer<PokemonDetailState>(

@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Actions, ofType, createEffect } from '@ngrx/effects';
-import { map, mergeMap, switchMap } from 'rxjs/operators';
+import { map, switchMap } from 'rxjs/operators';
 import { PokemonApiService } from '../../PokemonApiService/pokemon-api.service';
 import {
   getDetails,
   getDetailsSuccess,
+  getAbilityProp,
 } from '../PokemonDetailStore/detailsActions';
 
 @Injectable()
@@ -17,11 +18,20 @@ export class DetailsEffects {
   getDetails$ = createEffect(() =>
     this.actions$.pipe(
       ofType(getDetails),
-      switchMap((action) => this.pokemonApiService.fetchDetails(action.idOrName)),
+      switchMap((action) =>
+        this.pokemonApiService.fetchDetails(action.idOrName)
+      ),
       map((pokemonDetails) => getDetailsSuccess({ pokemonDetails }))
     )
   );
 }
+
+getAbilityProp$ = createEffect(() =>
+  this.actions$.pipe(
+    ofType(getAbilityProp),
+    switchMap((action) => this.pokemonApiService.fetchAbility(action.name))
+  )
+);
 
 // onFetchDetails() {
 //   this.pokemonApiService
