@@ -6,7 +6,7 @@ import {
 } from '@ngrx/store';
 import {
   PokemonDetails,
-  PokemonDetailsAbility,
+  AbilityProps,
 } from '../../pokemon-details.model';
 import { AppState } from '../../state/state';
 import {
@@ -16,7 +16,7 @@ import {
 
 export interface PokemonDetailState {
   pokemonDetails: PokemonDetails | null;
-  abilityDesc: PokemonDetailsAbility | null;
+  abilityDesc: AbilityProps | null;
 }
 
 export const initialState: PokemonDetailState = {

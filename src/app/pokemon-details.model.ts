@@ -13,11 +13,11 @@ export interface PokemonDetails {
 export interface PokemonDetailsAbility {
   ability: {
     name: string;
-    description:string;
+    description: string;
     effect_entries: {
-      effect: string,
-      language: string
-  }
+      effect: string;
+      language: string;
+    };
     url: string;
   };
   is_hidden: boolean;
@@ -26,11 +26,17 @@ export interface PokemonDetailsAbility {
 
 export interface PokemonType {
   type: {
-    name:string;
-    url:string;
+    name: string;
+    url: string;
   };
   slot: number;
 }
 
-
-
+export interface AbilityProps {
+  name: string;
+  description: string;
+  effect_entries: {
+    effect: string;
+    language: string;
+  };
+}

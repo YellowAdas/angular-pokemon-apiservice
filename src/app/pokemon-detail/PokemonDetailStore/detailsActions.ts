@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { PokemonDetails, PokemonDetailsAbility } from '../../pokemon-details.model';
+import { PokemonDetails, AbilityProps } from '../../pokemon-details.model';
 
 export const getDetails = createAction('[fetch-detail] get details',
 props<{ idOrName : number | string }>()
@@ -11,6 +11,6 @@ props<{ pokemonDetails : PokemonDetails }>()
 
 export const getAbilityProp = createAction('[fetch-detail] get abilities', props<{ name : string }>() );
 
-export const getAbilityPropSuccess = createAction('[fetch-detail] load abilities',props<{ abilityProp : PokemonDetailsAbility }>()
+export const getAbilityPropSuccess = createAction('[fetch-detail] load abilities',props<{ abilityProp : AbilityProps }>()
 );
 
