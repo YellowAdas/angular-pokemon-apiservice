@@ -8,3 +8,5 @@ props<{ idOrName: number | string }>()
 export const getDetailsSuccess = createAction('[fetch-detail] get details success',
 props<{ pokemonDetails: PokemonDetails }>()
 );
+
+export const get

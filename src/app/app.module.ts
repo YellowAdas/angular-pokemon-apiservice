@@ -39,7 +39,7 @@ const appRoutes: Routes = [
     MatPaginatorModule,
     MatIconModule,
     MatProgressSpinnerModule,
-    StoreModule.forRoot({ [pokemonListFeatureKey]: ListReducer , }, {}),
+    StoreModule.forRoot({ [pokemonListFeatureKey]: ListReducer , [pokemonDetailFeatureKey]: DetailsReducer }, {}),
     EffectsModule.forRoot([ListEffects, DetailsEffects]),
     StoreDevtoolsModule.instrument({})
   ],
