@@ -6,3 +6,8 @@
   bottom: 0;
   background: var(--borderColor);
 }
+
+.pokemon-detail-sprites {
+  height: 400px;
+  aspect-ratio: 1/1;
+}
