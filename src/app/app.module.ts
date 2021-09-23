@@ -27,6 +27,7 @@ import {
 } from './pokemon-detail/PokemonDetailStore/detailsReducers';
 import { DetailAbilityComponent } from './pokemon-detail/detail-ability/detail-ability.component';
 import { FindEngPipe } from './pokemon-detail/detail-ability/find-eng.pipe';
+import { HeaderComponent } from './header/header.component';
 
 const appRoutes: Routes = [
   { path: '', component: PokemonListComponent },
@@ -58,11 +59,12 @@ const appRoutes: Routes = [
   ],
   declarations: [
     AppComponent,
+    HeaderComponent,
     PokemonListComponent,
     PokemonDetailComponent,
     PokemonTypeToColorPipe,
+    DetailAbilityComponent,
     FindEngPipe,
-    DetailAbilityComponent
   ],
   bootstrap: [AppComponent],
 })

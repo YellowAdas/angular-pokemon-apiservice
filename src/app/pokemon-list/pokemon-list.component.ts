@@ -32,7 +32,6 @@ export class PokemonListComponent implements OnInit {
   isLoading$ = this.store.pipe(select(selectIsLoading))
 
   constructor(
-    private pokemonApiService: PokemonApiService,
     private store: Store<{}>
   ) {}
 
@@ -45,7 +44,6 @@ export class PokemonListComponent implements OnInit {
 
   ngOnInit() {
     this.store.dispatch(getList());
-
     this.store.dispatch(initFavs());
   }
 
