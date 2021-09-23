@@ -29,7 +29,7 @@ export class PokemonListComponent implements OnInit {
 
   pagination$ = this.store.pipe(select(selectPokemonListPagination));
   favorites$ = this.store.pipe(select(selectFav));
-  favoritesPokemons = new Set<number>();
+  //favoritesPokemons = new Set<number>();
   isLoading$ = this.store.pipe(select(selectIsLoading))
 
   constructor(
