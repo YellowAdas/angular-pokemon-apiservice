@@ -4,9 +4,10 @@
 <ng-container *ngIf="pokemonDetails$ | async as pokemonDetails">
   <div>
     <p>
-      <img [src]="(pokemonDetails$ | async).sprites.front_default" [alt]="" />
+      <h4 class="capitalize">Pokemon {{ (pokemonDetails$ | async).name }}</h4>
+      <img class="pokemon-detail-sprites"[src]="(pokemonDetails$ | async).sprites.front_default" [alt]="" />
     </p>
-    <h4 class="capitalize">Pokemon {{ (pokemonDetails$ | async).name }}</h4>
+    
     <div class="col-xs-12">
       <p>Height {{ (pokemonDetails$ | async).height }}</p>
       <div class="col-xs-5">
