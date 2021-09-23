@@ -37,6 +37,7 @@ export interface AbilityProps {
   description: string;
   effect_entries: {
     effect: string;
-    language: string;
-  };
+    language: 
+    {name : string};
+  }[];
 }

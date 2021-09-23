@@ -5,8 +5,10 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class FindEngPipe implements PipeTransform {
 
-  transform(value: any, args?: any): any {
-    return null;
+  transform(effect_entries: { effect: string, language : {
+    name:string}}[]): any {
+    return effect_entries.find(x => x.language.name =='en').effect;
   }
-
 }
+
+

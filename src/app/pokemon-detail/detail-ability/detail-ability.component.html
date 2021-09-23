@@ -4,5 +4,5 @@
 </p>
 <div>
   <h4 class="capitalize"> {{ (abilityProps$ | async ).name }} </h4>
-  <p> {{ (abilityProps$ | async ).effect_entries[0].effect }}</p></div>
+  <p> {{ ((abilityProps$ | async ).effect_entries) | findEng }}</p></div>
 </ng-container>
