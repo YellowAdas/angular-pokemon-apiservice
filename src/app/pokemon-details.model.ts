@@ -19,6 +19,7 @@ export interface PokemonDetailsAbility {
       language: string;
     };
     url: string;
+    short_effect: string;
   };
   is_hidden: boolean;
   slot: number;
@@ -40,4 +41,5 @@ export interface AbilityProps {
     language: 
     {name : string};
   }[];
+  
 }

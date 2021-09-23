@@ -13,12 +13,10 @@
         <p>Types:</p>
         <ul class="list-group">
           <li
-            [style.--borderColor]="item.types | pokemonTypeToColor"
-            class="list-group-item border-left-width pokemon-list-group-item"
-            *ngFor="let item of items$ | async"
+            class="list-group-item capitalize"
+            *ngFor="let types of (pokemonDetails$ | async).types"
           >
-            <div class="typeColor"></div>
-            {{ item }}
+            {{ types.type.name }}
           </li>
         </ul>
       </div>
@@ -26,7 +24,7 @@
         <p>Abilities:</p>
         <ul class="list-group">
           <li
-            class="list-group-item"
+            class="list-group-item capitalize"
             style="cursor: pointer;"
             [routerLink]="['ability', abilities.ability.name]"
             *ngFor="let abilities of (pokemonDetails$ | async).abilities"
@@ -39,6 +37,3 @@
   </div></ng-container
 >
 <router-outlet></router-outlet>
-
-[style.--borderColor]="item.types | pokemonTypeToColor" class="list-group-item
-border-left-width pokemon-list-group-item" *ngFor="let item of items$ | async"
