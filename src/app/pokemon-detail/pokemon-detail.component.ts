@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { PokemonDetails } from '../pokemon-details.model';
+import { selectPokemonListItems } from '../pokemon-list/store/listReducers';
 import { getDetails } from './PokemonDetailStore/detailsActions';
 import { selectDetails } from './PokemonDetailStore/detailsReducers';
 
@@ -32,5 +34,7 @@ export class PokemonDetailComponent implements OnInit {
     this.router.navigate(['']);
   }
 
-
+  items$: Observable<PokemonDetails[]> = this.store.pipe(
+    select(selectPokemonListItems)
+  );
 }
