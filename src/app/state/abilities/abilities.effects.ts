@@ -8,7 +8,7 @@ import { getAbilities, loadAbilitiesSuccess } from './abilities.actions';
 import { selectPokemonAbilities } from './abilities.reducer';
 
 @Injectable()
-export class ListEffects {
+export class AbilitiesListEffects {
   constructor(
     private pokemonApiService: PokemonApiService,
     private store: Store,

@@ -54,7 +54,7 @@ const appRoutes: Routes = [
       },
       {}
     ),
-    EffectsModule.forRoot([ListEffects, DetailsEffects]),
+    EffectsModule.forRoot([ListEffects, DetailsEffects, AbilitiesListEffects]),
     StoreDevtoolsModule.instrument({}),
   ],
   declarations: [
