@@ -39,6 +39,6 @@ export class PokemonApiService {
   }
 
   fetchAbilityList(limit: number) {
-    return this.http.get<AbilityProps>(`https://pokeapi.co/api/v2/ability/`);
+    return this.http.get<ListWrapper<AbilityProps>>(`https://pokeapi.co/api/v2/ability/`);
   }
 }
