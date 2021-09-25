@@ -1,7 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-import { PokemonDetails , AbilityProps } from '../pokemon-details.model';
+import { PokemonDetails, AbilityProps } from '../pokemon-details.model';
 import { PokemonListItem } from '../pokemon-list-item.model';
 
 export interface ListWrapper<ListItem> {
@@ -26,14 +26,19 @@ export class PokemonApiService {
     );
   }
 
-  fetchDetails(nameOrId: string | number )  {
+  fetchDetails(nameOrId: string | number) {
     return this.http.get<PokemonDetails>(
       `https://pokeapi.co/api/v2/pokemon/${nameOrId}`
     );
   }
 
-  fetchAbility(name : string) {
-    return this.http.get<AbilityProps>(`https://pokeapi.co/api/v2/ability/${name}`)
+  fetchAbility(name: string) {
+    return this.http.get<AbilityProps>(
+      `https://pokeapi.co/api/v2/ability/${name}`
+    );
   }
 
+  fetchAbilityList(limit: number) {
+    return this.http.get<AbilityProps>(`https://pokeapi.co/api/v2/ability/`);
+  }
 }
